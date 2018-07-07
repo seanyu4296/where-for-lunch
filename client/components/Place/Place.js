@@ -2,24 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Place.css';
 
-const Place = ({ place }) => {
+const Place = ({ place: { data } }) => {
+  const { name, address, phone, categories, price, reviewCount, rating } =
+    data || {};
   return (
     <div className={styles.root}>
-      <div className={styles.name}>{ place.name || 'Where for lunch?' }</div>
+      <div className={styles.name}>{name || 'Where for lunch?'}</div>
       <div className={styles.box}>
-        <div>{ place.address }</div>
-        <div>{ place.phone }</div>
-        <div>{ place.categories && place.categories.join(', ') }</div>
-        <div>{ place.price }</div>
-        { place.rating &&
-        <div className={styles.rating}>
-          <div className={styles.ratingScore}>{ place.reviewCount } reviews</div>
-          <div className={styles.stars}>
-            <div className={styles.emptyStars}></div>
-            <div className={styles.fullStars} style={{ width: `${place.rating / 5 * 100}%` }}></div>
+        <div>{address}</div>
+        <div>{phone}</div>
+        <div>{categories && categories.join(', ')}</div>
+        <div>{price}</div>
+        {rating && (
+          <div className={styles.rating}>
+            <div className={styles.ratingScore}>{reviewCount} reviews</div>
+            <div className={styles.stars}>
+              <div className={styles.emptyStars} />
+              <div
+                className={styles.fullStars}
+                style={{ width: `${(rating / 5) * 100}%` }}
+              />
+            </div>
           </div>
-        </div>
-        }
+        )}
       </div>
     </div>
   );
