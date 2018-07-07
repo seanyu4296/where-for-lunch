@@ -5,6 +5,7 @@ export const initialState = {
   radius: 500,
   latitude: null,
   longitude: null,
+  price: {},
 };
 /* Selectors */
 export const hasCompleteConditions = (state) => {

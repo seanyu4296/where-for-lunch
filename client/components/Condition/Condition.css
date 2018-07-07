@@ -1,5 +1,15 @@
 .root {
-  > span, > div {
+  > span {
     display: inline;
   }
+}
+
+.radiusContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.radiusInputContainer {
+  margin-top: 0.5rem;
+  display: flex;
 }
