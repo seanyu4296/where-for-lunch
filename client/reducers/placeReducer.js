@@ -8,13 +8,13 @@ export const initialState = {
 const placeReducer = (state = initialState, action) => {
   switch (action.type) {
   case PLACE_ACTIONS.FETCH_PLACE[REQUEST]: {
-    return { ...state, fetching: true };
+    return { ...state, fetching: true, data: null };
   }
   case PLACE_ACTIONS.FETCH_PLACE[SUCCESS]: {
-    return { ...state, error: null, fetching: false, ...action.place };
+    return { ...state, error: null, fetching: false, data: action.place };
   }
   case PLACE_ACTIONS.FETCH_PLACE[ERROR]: {
-    return { ...state, fetching: false, error: action.error };
+    return { ...state, fetching: false, data: null, error: action.error };
   }
   default:
     return state;
