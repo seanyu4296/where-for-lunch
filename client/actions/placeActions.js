@@ -1,4 +1,4 @@
-import PLACE_ACTIONS from './placeActionTypes';
+import PLACE_ACTIONS from '../actions/placeActionTypes';
 import { REQUEST, SUCCESS, ERROR } from './constants';
 
 export const fetchPlaceRequest = () => ({

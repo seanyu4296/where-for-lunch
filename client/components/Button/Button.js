@@ -12,7 +12,7 @@ const Button = ({ onClick, children, theme, disabled }) => {
         [styles.disabled]: disabled,
       })}
       disabled={disabled}
-      onClick={onClick}
+      onClick={disabled ? () => {} : onClick}
     >
       {children}
     </button>
@@ -22,7 +22,7 @@ const Button = ({ onClick, children, theme, disabled }) => {
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string]),
   onClick: PropTypes.func.isRequired,
-  theme: PropTypes.string.isRequired,
+  theme: PropTypes.string,
   disabled: PropTypes.bool,
 };
 

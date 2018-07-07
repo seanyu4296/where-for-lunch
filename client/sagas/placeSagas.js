@@ -6,7 +6,7 @@ import { REQUEST } from 'actions/constants';
 import { fetchPlaceSuccess } from 'actions/placeActions';
 import { fetchPlaceError } from '../actions/placeActions';
 
-function* fetchPlaces() {
+export function* fetchPlaces() {
   try {
     const condition = yield select(state => state.condition);
     const places = yield call(getPlaceIds, condition);

@@ -10,7 +10,9 @@ import Condition from 'components/Condition/Condition';
 import { hasCompleteConditions } from '../reducers/conditionReducer';
 
 const HomePage = ({ actions, condition, place }) => {
-  const fetchingCondition = condition.fetching ? 'Getting Location...' : null;
+  const fetchingCondition = condition.fetching
+    ? 'Getting your Location...'
+    : null;
   const fetchingPlace = place.fetching ? 'Getting a Place...' : null;
   const hasError =
     condition.error || place.error

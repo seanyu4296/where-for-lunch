@@ -1,8 +1,7 @@
-// import { handleActions } from 'redux-actions';
-import CONDITION_ACTIONS from 'actions/conditionActionTypes';
+import CONDITION_ACTIONS from '../actions/conditionActionTypes';
 import { REQUEST, SUCCESS, ERROR } from '../actions/constants';
 
-const initialState = {
+export const initialState = {
   radius: 500,
   latitude: null,
   longitude: null,

@@ -1,7 +1,7 @@
-import PLACE_ACTIONS from 'actions/placeActionTypes';
+import PLACE_ACTIONS from '../actions/placeActionTypes';
 import { REQUEST, SUCCESS, ERROR } from '../actions/constants';
 
-const initialState = {
+export const initialState = {
   fetching: false,
   error: null,
 };
@@ -11,7 +11,7 @@ const placeReducer = (state = initialState, action) => {
     return { ...state, fetching: true };
   }
   case PLACE_ACTIONS.FETCH_PLACE[SUCCESS]: {
-    return { ...state, fetching: false, ...action.place };
+    return { ...state, error: null, fetching: false, ...action.place };
   }
   case PLACE_ACTIONS.FETCH_PLACE[ERROR]: {
     return { ...state, fetching: false, error: action.error };
