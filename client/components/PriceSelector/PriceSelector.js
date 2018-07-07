@@ -44,6 +44,6 @@ export default class PriceSelector extends React.Component {
 }
 
 PriceSelector.propTypes = {
-  onChange: PropTypes.func,
-  value: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.object.isRequired,
 };

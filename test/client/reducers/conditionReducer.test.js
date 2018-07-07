@@ -21,6 +21,16 @@ describe('Condition Reducer', () => {
       expect(state.radius).toEqual(radius);
     });
   });
+  describe('After Set Property Prices', () => {
+    test('should return state with prices', () => {
+      const prices = { 1: false, 2: true };
+      const state = conditionReducer(
+        initialState,
+        setProperty('prices', prices),
+      );
+      expect(state.prices).toEqual(prices);
+    });
+  });
   describe('After FetchLatLng Success', () => {
     test('should return state with latitude and longitude', () => {
       const coords = {
