@@ -11,7 +11,7 @@ export const hasCompleteConditions = (state) => {
   return state && state.radius && state.latitude && state.longitude;
 };
 
-/*  */
+/* Reducer */
 const conditionReducer = (state = initialState, action) => {
   switch (action.type) {
   case CONDITION_ACTIONS.SET_RADIUS: {
@@ -32,17 +32,4 @@ const conditionReducer = (state = initialState, action) => {
   }
 };
 
-/* const conditionReducer = handleActions(
-  {
-    [actionTypes.SET_RADIUS](state, action) {
-      return { ...state, radius: action.payload };
-    },
-    [actionTypes.SET_LAT_LNG](state, action) {
-      const { latitude, longitude } = action.payload;
-      return { ...state, latitude, longitude };
-    },
-  },
-  initialState,
-);
- */
 export default conditionReducer;
