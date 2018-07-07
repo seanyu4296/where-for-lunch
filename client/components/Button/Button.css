@@ -12,5 +12,9 @@
     background-size: 60%;
     margin-left: calc($base-spacing * 2);
     box-shadow: $button-shadow;
+    
+  }
+  &&.disabled {
+    background-color: $disabled;
   }
 }

@@ -1,15 +1,23 @@
-import { handleActions } from 'redux-actions';
-import * as actionTypes from 'actions/placeActionTypes';
+import PLACE_ACTIONS from 'actions/placeActionTypes';
+import { REQUEST, SUCCESS, ERROR } from '../actions/constants';
 
 const initialState = {
+  fetching: false,
+  error: null,
 };
-const placeReducer = handleActions(
-  {
-    [actionTypes.SET_DETAILS](state, action) {
-      return { ...state, ...action.payload };
-    },
-  },
-  initialState,
-);
-
+const placeReducer = (state = initialState, action) => {
+  switch (action.type) {
+  case PLACE_ACTIONS.FETCH_PLACE[REQUEST]: {
+    return { ...state, fetching: true };
+  }
+  case PLACE_ACTIONS.FETCH_PLACE[SUCCESS]: {
+    return { ...state, fetching: false, ...action.place };
+  }
+  case PLACE_ACTIONS.FETCH_PLACE[ERROR]: {
+    return { ...state, fetching: false, error: action.error };
+  }
+  default:
+    return state;
+  }
+};
 export default placeReducer;

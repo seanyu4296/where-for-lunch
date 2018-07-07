@@ -1,23 +1,24 @@
-import { call, takeEvery, put } from 'redux-saga/effects';
+import { call, takeEvery, put, select } from 'redux-saga/effects';
 import { getPlaceIds } from 'services/placeApi';
 import { getRandom } from 'lib/utils';
-import placeActions from 'actions/placeActions';
-import {
-  FETCH_PLACES,
-} from 'actions/placeActionTypes';
+import PLACE_ACTIONS from 'actions/placeActionTypes';
+import { REQUEST } from 'actions/constants';
+import { fetchPlaceSuccess } from 'actions/placeActions';
+import { fetchPlaceError } from '../actions/placeActions';
 
-function* fetchPlace(action) {
+function* fetchPlaces() {
   try {
-    const places = yield call(getPlaceIds, action.payload);
+    const condition = yield select(state => state.condition);
+    const places = yield call(getPlaceIds, condition);
     const randomPlace = getRandom(places);
-    yield put(placeActions.setDetails(randomPlace));
+    yield put(fetchPlaceSuccess(randomPlace));
   } catch (e) {
-    console.log('error! ', e);
+    yield put(fetchPlaceError(e));
   }
 }
 
 function* placeSagas() {
-  yield takeEvery(FETCH_PLACES, fetchPlace);
+  yield takeEvery(PLACE_ACTIONS.FETCH_PLACE[REQUEST], fetchPlaces);
 }
 
 export default placeSagas;

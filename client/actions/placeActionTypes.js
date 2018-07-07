@@ -1,2 +1,5 @@
-export const FETCH_PLACES = 'fetchPlaces';
-export const SET_DETAILS = 'setDetails';
+import { genActions } from './constants';
+
+export default genActions('place', [
+  { name: 'FETCH_PLACE', type: 'async' },
+]);

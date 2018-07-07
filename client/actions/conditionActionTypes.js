@@ -1,2 +1,6 @@
-export const SET_RADIUS = 'setRadius';
-export const SET_LAT_LNG = 'setLatLng';
+import { genActions } from './constants';
+
+export default genActions('condition', [
+  'SET_RADIUS',
+  { name: 'FETCH_LAT_LNG', type: 'async' },
+]);
