@@ -26,9 +26,8 @@ export default class PricePicker extends React.Component {
       <div className={styles.root}>
         <label>Price Range</label>
         {PricePicker.choices.map(c => (
-          <label key={c.id} htmlFor={c.text}>
+          <label key={c.id}>
             <input
-              key={c.id}
               type="checkbox"
               value={c.id}
               name={c.text}
