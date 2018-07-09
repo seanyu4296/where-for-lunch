@@ -56,7 +56,6 @@ const mapDispatchToProps = dispatch => ({
     {
       setCondition: conditionActions.setProperty,
       fetchPlaceRequest: placeActions.fetchPlaceRequest,
-      setCondition: conditionActions.setProperty,
     },
     dispatch,
   ),

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './PriceSelector.css';
+import styles from './PricePicker.css';
 
-export default class PriceSelector extends React.Component {
+export default class PricePicker extends React.Component {
   static choices = Array(4)
     .fill(null)
     .map((v, i) => ({
@@ -24,8 +24,8 @@ export default class PriceSelector extends React.Component {
   render() {
     return (
       <div className={styles.root}>
-        <label>Price Selector</label>
-        {PriceSelector.choices.map(c => (
+        <label>Price Range</label>
+        {PricePicker.choices.map(c => (
           <label key={c.id} htmlFor={c.text}>
             <input
               key={c.id}
@@ -43,7 +43,7 @@ export default class PriceSelector extends React.Component {
   }
 }
 
-PriceSelector.propTypes = {
+PricePicker.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.object.isRequired,
 };
