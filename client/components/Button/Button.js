@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Button.css';
 
+const emptyFunc = () => {};
+
 const Button = ({ onClick, children, theme, disabled }) => {
   return (
     <button
@@ -12,7 +14,7 @@ const Button = ({ onClick, children, theme, disabled }) => {
         [styles.disabled]: disabled,
       })}
       disabled={disabled}
-      onClick={disabled ? () => {} : onClick}
+      onClick={disabled ? emptyFunc : onClick}
     >
       {children}
     </button>

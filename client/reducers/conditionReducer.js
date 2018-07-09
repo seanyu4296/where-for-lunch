@@ -8,14 +8,14 @@ export const initialState = {
 };
 /* Selectors */
 export const hasCompleteConditions = (state) => {
-  return state && state.radius && state.latitude && state.longitude;
+  return !!(state && state.radius && state.latitude && state.longitude);
 };
 
 /* Reducer */
 const conditionReducer = (state = initialState, action) => {
   switch (action.type) {
-  case CONDITION_ACTIONS.SET_RADIUS: {
-    return { ...state, radius: action.radius };
+  case CONDITION_ACTIONS.SET_PROPERTY: {
+    return { ...state, [action.property]: action.value };
   }
   case CONDITION_ACTIONS.FETCH_LAT_LNG[REQUEST]: {
     return { ...state, fetching: true, error: null };

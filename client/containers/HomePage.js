@@ -9,33 +9,42 @@ import Place from 'components/Place/Place';
 import Condition from 'components/Condition/Condition';
 import { hasCompleteConditions } from '../reducers/conditionReducer';
 
-const HomePage = ({ actions, condition, place }) => {
-  const fetchingCondition = condition.fetching
-    ? 'Getting your Location...'
-    : null;
-  const fetchingPlace = place.fetching ? 'Getting a Place...' : null;
-  const hasError =
-    condition.error || place.error
-      ? 'Encountered an error. Please try again.'
+class HomePage extends React.Component {
+  onSubmit = () => {
+    this.props.actions.fetchPlaceRequest(this.props.condition);
+  };
+  render() {
+    const { condition, place } = this.props;
+    const fetchingConditionMessage = condition.fetching
+      ? 'Getting your Location...'
       : null;
-  return (
-    <div className="homePageWrapper">
-      <div>
-        {fetchingCondition ||
-          fetchingPlace ||
-          hasError || <Place place={place} />}
+    const fetchingPlaceMessage = place.fetching ? 'Getting a Place...' : null;
+    const errorMessage =
+      condition.error || place.error
+        ? 'Encountered an error. Please try again.'
+        : null;
+    return (
+      <div className="homePageWrapper">
+        <div>
+          {fetchingConditionMessage ||
+            fetchingPlaceMessage ||
+            errorMessage || <Place place={place} />}
+        </div>
+        <div className="searchWrapper">
+          <Condition
+            condition={condition}
+            action={this.props.actions.setCondition}
+          />
+          <Button
+            onClick={this.onSubmit}
+            theme="homepageClick"
+            disabled={!hasCompleteConditions(condition)}
+          />
+        </div>
       </div>
-      <div className="searchWrapper">
-        <Condition condition={condition} action={actions.setRadius} />
-        <Button
-          onClick={actions.fetchPlaceRequest}
-          theme="homepageClick"
-          disabled={!hasCompleteConditions(condition)}
-        />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = ({ condition, place }) => ({
   condition,
@@ -46,7 +55,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
       fetchPlaceRequest: placeActions.fetchPlaceRequest,
-      setRadius: conditionActions.setRadius,
+      setCondition: conditionActions.setProperty,
     },
     dispatch,
   ),
@@ -56,8 +65,8 @@ HomePage.propTypes = {
   place: PropTypes.object,
   condition: PropTypes.object,
   actions: PropTypes.shape({
-    fetchPlaces: PropTypes.func,
-    setRadius: PropTypes.func,
+    fetchPlaceRequest: PropTypes.func,
+    setCondition: PropTypes.func,
   }).isRequired,
 };
 

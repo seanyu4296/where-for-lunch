@@ -16,6 +16,30 @@ exports[`With Jest snapshot, Place component renders rating section when present
     <div />
     <div />
     <div />
+    <div
+      className="rating"
+    >
+      <div
+        className="ratingScore"
+      >
+         reviews
+      </div>
+      <div
+        className="stars"
+      >
+        <div
+          className="emptyStars"
+        />
+        <div
+          className="fullStars"
+          style={
+            Object {
+              "width": "70%",
+            }
+          }
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

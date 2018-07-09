@@ -19,9 +19,8 @@ describe('Place Reducer', () => {
     });
   });
   describe('After Fetch Place Request', () => {
-    test('should return state with empty data and fetching', () => {
+    test('should return state with fetching', () => {
       const state = placeReducer(initialState, fetchPlaceRequest());
-      expect(state.data).toBeNull();
       expect(state.fetching).toBe(true);
     });
   });
