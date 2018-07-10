@@ -14,3 +14,7 @@
     box-shadow: $button-shadow;
   }
 }
+
+.root:disabled {
+  background-color: $disabled;
+}

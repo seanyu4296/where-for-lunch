@@ -1,5 +1,18 @@
-import { createActions } from 'redux-actions';
-import * as placeActionTypes from './placeActionTypes';
+import PLACE_ACTIONS from '../actions/placeActionTypes';
+import { REQUEST, SUCCESS, ERROR } from './constants';
 
-const actionTypes = createActions({}, ...Object.values(placeActionTypes));
-export default actionTypes;
+export const fetchPlaceRequest = condition => ({
+  type: PLACE_ACTIONS.FETCH_PLACE[REQUEST],
+  condition,
+});
+
+export const fetchPlaceSuccess = place => ({
+  type: PLACE_ACTIONS.FETCH_PLACE[SUCCESS],
+  place,
+});
+
+export const fetchPlaceError = error => ({
+  type: PLACE_ACTIONS.FETCH_PLACE[ERROR],
+  error,
+});
+

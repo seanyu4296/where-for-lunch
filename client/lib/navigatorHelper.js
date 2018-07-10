@@ -1,14 +1,19 @@
 import {
-  SET_LAT_LNG,
-} from 'actions/conditionActionTypes';
+  fetchLatLngRequest,
+  fetchLatLngSuccess,
+  fetchLatLngError,
+} from '../actions/conditionActions';
 
 export function fetchLatLng(store) {
-  navigator.geolocation.getCurrentPosition((position) => {
-    store.dispatch({
-      type: SET_LAT_LNG,
-      payload: position.coords,
-    });
-  }, (err) => {
-    console.log('give it to me! ', err);
-  });
+  store.dispatch(fetchLatLngRequest());
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { longitude, latitude } = position.coords;
+      store.dispatch(fetchLatLngSuccess({ longitude, latitude }));
+    },
+    (err) => {
+      store.dispatch(fetchLatLngError(err));
+      console.log('give it to me! ', err);
+    },
+  );
 }

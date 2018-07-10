@@ -9,16 +9,21 @@ export default class Condition extends PureComponent {
     action: PropTypes.func,
   };
 
-  handleOnBlurAction = (e) => {
-    this.props.action(e.target.value);
-  }
+  handleRadiusOnBlurAction = (e) => {
+    this.props.action('radius', e.target.value);
+  };
 
   render() {
-    const { condition: { radius } } = this.props;
+    const {
+      condition: { radius },
+    } = this.props;
     return (
       <div className={styles.root}>
         <span>radius:</span>
-        <Input defaultValue={radius} onBlurAction={this.handleOnBlurAction}></Input>
+        <Input
+          defaultValue={radius}
+          onBlurAction={this.handleRadiusOnBlurAction}
+        />
         <span>meters</span>
       </div>
     );
