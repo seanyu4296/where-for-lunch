@@ -13,7 +13,6 @@ router.get('/:id', async (req, res) => {
   res.send(place);
 });
 router.get('/', async (req, res) => {
-  console.log(req, res);
   const list = await searchPlaces(toSearchPlacesParams(req.query));
   res.send(list.map(i => fromSearchPlacesParams(i)));
 });
