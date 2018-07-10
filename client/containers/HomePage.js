@@ -54,8 +54,8 @@ const mapStateToProps = ({ condition, place }) => ({
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      fetchPlaceRequest: placeActions.fetchPlaceRequest,
       setCondition: conditionActions.setProperty,
+      fetchPlaceRequest: placeActions.fetchPlaceRequest,
     },
     dispatch,
   ),
