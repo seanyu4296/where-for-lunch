@@ -5,14 +5,13 @@
   padding: 0 $base-spacing;
   margin: 0 auto;
 
-  @media ( min-width: calc($tablet-portrait - ($base-spacing * 3)) ) {
+  @media (min-width: calc($tablet-portrait - ($base-spacing * 3))) {
     padding: 0 calc($base-spacing * 1.5);
   }
 }
 
 :global(.homePageWrapper) {
   min-height: 45rem;
-
 }
 
 :global(.searchWrapper) {
@@ -22,8 +21,30 @@
 }
 
 body {
-  background: url("assets/index.jpg") no-repeat center center fixed;
+  background: url('assets/index.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: $body-font;
   color: white;
+}
+
+:root {
+  box-sizing: border-box;
+  font-family: 'SF UI Display', sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+a:-webkit-any-link {
+  color: inherit;
+  text-decoration: none;
+}
+html {
+  box-sizing: border-box;
+}
+*:not(img),
+*:before,
+*:after {
+  box-sizing: inherit;
 }
