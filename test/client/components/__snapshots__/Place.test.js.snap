@@ -9,8 +9,10 @@ exports[`With Jest snapshot, Place component renders rating section when present
   >
     Where for lunch?
   </div>
-  <div
+  <a
     className="box"
+    href="/place/undefined"
+    onClick={[Function]}
   >
     <div />
     <div />
@@ -40,6 +42,6 @@ exports[`With Jest snapshot, Place component renders rating section when present
         />
       </div>
     </div>
-  </div>
+  </a>
 </div>
 `;

@@ -1,52 +1,41 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import PlacePage from '../../../client/containers/PlacePage/PlacePage';
+import { PlacePage } from '../../../client/containers/PlacePage/PlacePage';
 
 test('With Jest Snapshot, Place Page renders content when place data is present', () => {
   const place = {
     data: {
-      id: 'FqnptZYzThkf-4nOTQbBIg',
-      alias: 'jts-manukan-grille-quezon-city-2',
-      name: "JT's Manukan Grille",
-      image_url:
-        'https://s3-media4.fl.yelpcdn.com/bphoto/5wSo7ZH1YYHGBn8UAMS9zw/o.jpg',
-      is_claimed: false,
+      id: 'TEST',
+      name: 'TEST',
       is_closed: false,
-      url:
-        'https://www.yelp.com/biz/jts-manukan-grille-quezon-city-2?adjust_creative=Jeqz16hF1ke4xj3VOh5vAQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=Jeqz16hF1ke4xj3VOh5vAQ',
+      url: 'https://www.yelp.com/test',
       phone: '+6323548983',
-      display_phone: '+63 2 354 8983',
+      display_phone: '+63 0000000',
       review_count: 2,
       categories: [
         {
-          alias: 'filipino',
-          title: 'Filipino',
+          alias: 'TEST',
+          title: 'TEST',
         },
       ],
       rating: 4.5,
       location: {
-        address1: '74 Alcaraz Cor Palanan St, Sienna',
+        address1: 'TEST',
         address2: '',
         address3: '',
         city: 'Quezon City',
         zip_code: '',
         country: 'PH',
         state: 'NCR',
-        display_address: [
-          '74 Alcaraz Cor Palanan St, Sienna',
-          'Quezon City, Metro Manila',
-          'Philippines',
-        ],
+        display_address: ['Test'],
         cross_streets: '',
       },
       coordinates: {
-        latitude: 14.635065,
-        longitude: 121.001045,
+        latitude: 1,
+        longitude: 1,
       },
-      photos: [
-        'https://s3-media4.fl.yelpcdn.com/bphoto/5wSo7ZH1YYHGBn8UAMS9zw/o.jpg',
-        'https://s3-media1.fl.yelpcdn.com/bphoto/jTf-2Buo0Y3bPDUt_XMlKQ/o.jpg',
-      ],
+      photos: ['https://test.com'],
       hours: [
         {
           open: [
@@ -100,6 +89,16 @@ test('With Jest Snapshot, Place Page renders content when place data is present'
       transactions: [],
     },
   };
-  const placePage = renderer.create(<PlacePage place={place} />).toJSON();
+  const placePage = renderer
+    .create(
+      <MemoryRouter keyLength={0}>
+        <PlacePage
+          actions={{ fetchPlaceDetailsRequest: () => {} }}
+          place={place}
+          match={{ params: { id: 'test' } }}
+        />
+      </MemoryRouter>,
+    )
+    .toJSON();
   expect(placePage).toMatchSnapshot();
 });

@@ -9,7 +9,7 @@ import styles from './PlacePage.css';
 import { fetchPlaceDetailsRequest } from '../../actions/placeActions';
 import Spinner from '../../components/Spinner/Spinner';
 
-class PlacePage extends React.Component {
+export class PlacePage extends React.Component {
   componentDidMount() {
     this.props.actions.fetchPlaceDetailsRequest();
   }
@@ -39,7 +39,7 @@ class PlacePage extends React.Component {
       </div>
     ) : (
       <div className={styles.root}>
-        {photos.length ? (
+        {photos.length >= 1 ? (
           <Carousel>
             {photos.map((v, i) => {
               return (
