@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import Carousel from 'nuka-carousel';
 import { bindActionCreators } from 'redux';
 import styles from './PlacePage.css';
 import { fetchPlaceDetailsRequest } from '../../actions/placeActions';
-// const getHours = () => {};
+import Spinner from '../../components/Spinner/Spinner';
 
 class PlacePage extends React.Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class PlacePage extends React.Component {
 
   render() {
     const {
-      place: { data },
+      place: { data, fetching },
     } = this.props;
     const {
       name,
@@ -32,7 +33,11 @@ class PlacePage extends React.Component {
     } =
       data || {};
     const { city, display_address: address = [] } = location || {};
-    return (
+    return fetching && isEmpty(data) ? (
+      <div className={styles.root}>
+        <Spinner />
+      </div>
+    ) : (
       <div className={styles.root}>
         {photos.length ? (
           <Carousel>
