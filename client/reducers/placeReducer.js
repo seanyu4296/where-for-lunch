@@ -16,6 +16,12 @@ const placeReducer = (state = initialState, action) => {
   case PLACE_ACTIONS.FETCH_PLACE[ERROR]: {
     return { ...state, fetching: false, data: null, error: action.error };
   }
+  case PLACE_ACTIONS.FETCH_PLACE_DETAILS[REQUEST]:
+    return { ...state, fetching: true, error: null };
+  case PLACE_ACTIONS.FETCH_PLACE_DETAILS[SUCCESS]:
+    return { ...state, fetching: false, data: action.place };
+  case PLACE_ACTIONS.FETCH_PLACE_DETAILS[ERROR]:
+    return { ...state, fetching: false, error: action.error };
   default:
     return state;
   }
