@@ -10,6 +10,29 @@ import { fetchPlaceDetailsRequest } from '../../actions/placeActions';
 import Spinner from '../../components/Spinner/Spinner';
 
 export class PlacePage extends React.Component {
+  static renderHours(hours = []) {
+    return [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ].map((v, i) => {
+      const { open = [] } = hours[0] || {};
+      const openDetails = open.find(e => e.day === i);
+      const text = openDetails
+        ? `${openDetails.start} - ${openDetails.end}`
+        : 'Unknown';
+      return (
+        <p className={styles.value} key={v}>
+          {v}: {text}
+        </p>
+      );
+    });
+  }
+
   componentDidMount() {
     this.props.actions.fetchPlaceDetailsRequest();
   }
@@ -113,21 +136,7 @@ export class PlacePage extends React.Component {
               {hours[0] ? (
                 <div className={styles.detail}>
                   <p className={styles.key}>Opening Hours</p>
-                  {[
-                    'Sunday',
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                    'Saturday',
-                  ].map((v, i) => {
-                    return (
-                      <p className={styles.value} key={v}>
-                        {v}: {hours[0].open[i].start} - {hours[0].open[i].end}
-                      </p>
-                    );
-                  })}
+                  {PlacePage.renderHours(hours)}
                 </div>
               ) : null}
             </div>

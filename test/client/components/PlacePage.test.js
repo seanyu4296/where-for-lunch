@@ -9,8 +9,8 @@ test('With Jest Snapshot, Place Page renders content when place data is present'
       id: 'TEST',
       name: 'TEST',
       is_closed: false,
-      url: 'https://www.yelp.com/test',
-      phone: '+6323548983',
+      url: 'https://www.test.com/test',
+      phone: '+6300000',
       display_phone: '+63 0000000',
       review_count: 2,
       categories: [
@@ -21,21 +21,21 @@ test('With Jest Snapshot, Place Page renders content when place data is present'
       ],
       rating: 4.5,
       location: {
-        address1: 'TEST',
+        address1: '',
         address2: '',
         address3: '',
-        city: 'Quezon City',
+        city: '',
         zip_code: '',
-        country: 'PH',
-        state: 'NCR',
-        display_address: ['Test'],
+        country: '',
+        state: '',
+        display_address: [''],
         cross_streets: '',
       },
       coordinates: {
         latitude: 1,
         longitude: 1,
       },
-      photos: ['https://test.com'],
+      photos: [],
       hours: [
         {
           open: [
@@ -89,14 +89,15 @@ test('With Jest Snapshot, Place Page renders content when place data is present'
       transactions: [],
     },
   };
+  const props = {
+    place,
+    actions: { fetchPlaceDetailsRequest: () => {} },
+    match: { params: { id: 'test' } },
+  };
   const placePage = renderer
     .create(
       <MemoryRouter keyLength={0}>
-        <PlacePage
-          actions={{ fetchPlaceDetailsRequest: () => {} }}
-          place={place}
-          match={{ params: { id: 'test' } }}
-        />
+        <PlacePage {...props} />
       </MemoryRouter>,
     )
     .toJSON();
