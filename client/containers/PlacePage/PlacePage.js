@@ -4,10 +4,12 @@ import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import Carousel from 'nuka-carousel';
+
 import { bindActionCreators } from 'redux';
 import styles from './PlacePage.css';
 import { fetchPlaceDetailsRequest } from '../../actions/placeActions';
 import Spinner from '../../components/Spinner/Spinner';
+import GMaps from '../../components/GMaps';
 
 export class PlacePage extends React.Component {
   static renderHours(hours = []) {
@@ -49,13 +51,14 @@ export class PlacePage extends React.Component {
       is_closed: isClosed,
       url: yelpUrl,
       display_phone: displayPhone,
-      // coordinates,
+      coordinates = {},
       photos = [],
       review_count: reviewCount,
       hours = [],
     } =
       data || {};
     const { city, display_address: address = [] } = location || {};
+    const { latitude, longitude } = coordinates || {};
     return fetching && isEmpty(data) ? (
       <div className={styles.root}>
         <Spinner />
@@ -140,7 +143,9 @@ export class PlacePage extends React.Component {
                 </div>
               ) : null}
             </div>
-            <div className={styles.mapContainer} />
+            <div className={styles.mapContainer}>
+              <GMaps lat={latitude} lng={longitude} />
+            </div>
           </div>
         </div>
       </div>
