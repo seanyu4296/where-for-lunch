@@ -16,3 +16,15 @@ export const fetchPlaceError = error => ({
   error,
 });
 
+export const fetchPlaceDetailsRequest = id => ({
+  type: PLACE_ACTIONS.FETCH_PLACE_DETAILS[REQUEST],
+  id,
+});
+export const fetchPlaceDetailsSuccess = place => ({
+  type: PLACE_ACTIONS.FETCH_PLACE_DETAILS[SUCCESS],
+  place,
+});
+export const fetchPlaceDetailsError = error => ({
+  type: PLACE_ACTIONS.FETCH_PLACE_DETAILS[ERROR],
+  error,
+});

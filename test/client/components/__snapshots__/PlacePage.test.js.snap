@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With Jest Snapshot, Place Page renders content when place data is present 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="contentContainer"
+  >
+    <div
+      className="topContent"
+    >
+      <div
+        className="headerContainer"
+      >
+        <h3
+          className="title"
+        >
+          TEST
+        </h3>
+        <span
+          className="subtitle"
+        >
+          
+           ·
+           
+          <div
+            className="categoryContainer"
+          >
+            <span
+              className="category"
+            >
+              TEST
+            </span>
+          </div>
+        </span>
+        <a
+          className="yelpButton"
+          href="https://www.test.com/test"
+        >
+          <span
+            className="yelpText"
+          >
+            View in Yelp
+          </span>
+        </a>
+      </div>
+      <div
+        className="rightHeaderContainer"
+      >
+        <div
+          className="ratingContainer lowRating midRating highRating"
+        >
+          <span
+            className="rating"
+          >
+            4.5
+          </span>
+          <span
+            className="ratingDenominator"
+          >
+            /5
+          </span>
+        </div>
+        <p
+          className="openOrClosed open"
+        >
+          OPEN
+        </p>
+      </div>
+    </div>
+    <div
+      className="divider"
+    />
+    <div
+      className="detailsContainer"
+    >
+      <div
+        className="mainDetailsContainer"
+      >
+        <h4
+          className="detailsHeader"
+        >
+          Details
+        </h4>
+        <div
+          className="detail"
+        >
+          <p
+            className="key"
+          >
+            Phone
+          </p>
+          <p
+            className="value"
+          >
+            +63 0000000
+          </p>
+        </div>
+        <div
+          className="detail"
+        >
+          <p
+            className="key"
+          >
+            Address
+          </p>
+          <p
+            className="value"
+          >
+            
+          </p>
+        </div>
+        <div
+          className="detail"
+        >
+          <p
+            className="key"
+          >
+            Review Count in Yelp
+          </p>
+          <p
+            className="value"
+          >
+            2
+          </p>
+        </div>
+        <div
+          className="detail"
+        >
+          <p
+            className="key"
+          >
+            Opening Hours
+          </p>
+          <p
+            className="value"
+          >
+            Sunday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Monday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Tuesday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Wednesday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Thursday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Friday
+            : 
+            1100 - 0200
+          </p>
+          <p
+            className="value"
+          >
+            Saturday
+            : 
+            1100 - 0200
+          </p>
+        </div>
+      </div>
+      <div
+        className="mapContainer"
+      />
+    </div>
+  </div>
+</div>
+`;
