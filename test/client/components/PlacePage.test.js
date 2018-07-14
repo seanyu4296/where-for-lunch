@@ -1,5 +1,4 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import Carousel from 'nuka-carousel';
 import { mount } from 'enzyme';
@@ -14,9 +13,7 @@ describe('With Enzyme, PlacePage Component', () => {
   };
   test('should have one Spinner when place fetching is true', () => {
     const wrapper = mount(
-      <MemoryRouter keyLength={0}>
-        <PlacePage {...baseProps} place={{ fetching: true, data: {} }} />
-      </MemoryRouter>,
+      <PlacePage {...baseProps} place={{ fetching: true, data: {} }} />,
     );
     expect(wrapper.find(Spinner).length).toBe(1);
   });
@@ -147,12 +144,6 @@ test('With Jest Snapshot, Place Page renders content when place data is present'
     actions: { fetchPlaceDetailsRequest: () => {} },
     match: { params: { id: 'test' } },
   };
-  const placePage = renderer
-    .create(
-      <MemoryRouter keyLength={0}>
-        <PlacePage {...props} />
-      </MemoryRouter>,
-    )
-    .toJSON();
+  const placePage = renderer.create(<PlacePage {...props} />).toJSON();
   expect(placePage).toMatchSnapshot();
 });
