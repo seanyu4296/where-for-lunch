@@ -186,7 +186,15 @@ exports[`With Jest Snapshot, Place Page renders content when place data is prese
       </div>
       <div
         className="mapContainer"
-      />
+      >
+        <div
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>

@@ -176,7 +176,7 @@
 
 .mapContainer {
   flex-basis: 48%;
-  background-color: black;
+  background-color: gainsboro;
   height: 500px;
 }
 .detailsHeader {

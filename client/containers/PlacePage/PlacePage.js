@@ -144,7 +144,11 @@ export class PlacePage extends React.Component {
               ) : null}
             </div>
             <div className={styles.mapContainer}>
-              <GMaps lat={latitude} lng={longitude} />
+              {latitude && longitude ? (
+                <GMaps lat={latitude} lng={longitude} />
+              ) : (
+                <span>No Location Available</span>
+              )}
             </div>
           </div>
         </div>
