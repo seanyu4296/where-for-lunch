@@ -5,6 +5,7 @@ import {
   fetchPlaceSuccess,
   fetchPlaceError,
   fetchPlaceRequest,
+  fetchPlaceDetailsSuccess,
 } from '../../../client/actions/placeActions';
 
 describe('Place Reducer', () => {
@@ -30,6 +31,13 @@ describe('Place Reducer', () => {
       expect(state.fetching).toEqual(false);
       expect(state.error).toBeTruthy();
       expect(state.data).toBeNull();
+    });
+  });
+  describe('After Fetch Place Details Success', () => {
+    test('should return state with fetching as false and data equal to payload', () => {
+      const place = { test: 'place' };
+      const state = placeReducer(initialState, fetchPlaceDetailsSuccess(place));
+      expect(state.data).toMatchObject(place);
     });
   });
 });
